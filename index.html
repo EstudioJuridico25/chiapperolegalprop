@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Juridico Inmoviliario Chiappero</title>
+    <link rel="Website icon" href="./IMAGENES/CHIAPPERO.png"> 
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Incluye Font Awesome para los íconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        /* Estilos generales para el cuerpo de la página */
+        body {
+            font-family: 'Poppins', sans-serif;/* Fuente 'Inter' por defecto */
+            display: flex; /* Utiliza flexbox para crear columnas */
+            min-height: 100vh; /* Asegura que ocupe la altura completa de la ventana */
+            width: 100%; /* Ocupa el ancho completo */
+            margin: 0; /* Elimina márgenes por defecto del body */
+            padding: 0; /* Elimina padding por defecto del body */
+            box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+        }
+
+        /* Estilos para la sección izquierda (violeta más oscuro) */
+        .left-section {
+            flex: 1; /* Ocupa una parte igual del ancho disponible */
+            background-color: #EFEAF4; /* Un violeta profundo y elegante */
+            padding: 2.5rem; /* Espaciado interno */
+            text-align: center; /* Centra el texto */
+            color: #000000; /* Color del texto (grisáceo claro) para contraste */
+            display: flex; /* Habilita flexbox para organizar el contenido verticalmente */
+            flex-direction: column; /* Organiza los elementos en columna */
+            align-items: center; /* Centra los elementos horizontalmente */
+            justify-content: center; /* Centra los elementos verticalmente */
+            box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1); /* Sombra sutil al borde derecho */
+        }
+
+        /* Estilos para la sección derecha (violeta más claro) */
+        .right-section {
+            flex: 1; /* Ocupa una parte igual del ancho disponible */
+            background-color: #EFEAF4; /* Un violeta muy pálido y suave */
+            padding: 2.5rem; /* Espaciado interno */
+            text-align: center; /* Centra el texto */
+            color: #000000; /* Color de texto más oscuro para contraste en fondo claro */
+            display: flex; /* Habilita flexbox para organizar el contenido verticalmente */
+            flex-direction: column; /* Organiza los elementos en columna */
+            align-items: center; /* Centra los elementos horizontalmente */
+            justify-content: center; /* Centra los elementos verticalmente */
+            box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+        }
+
+        /* Estilos para la imagen de perfil */
+        .profile-img {
+            width: 120px; /* Ancho de la imagen */
+            height: 120px; /* Alto de la imagen */
+            border-radius: 50%; /* Hace la imagen redonda */
+            object-fit: cover; /* Ajusta la imagen para cubrir el área */
+            margin: 0 auto 1.5rem; /* Margen inferior */
+            border: 4px solid #9D6ECF; /* Borde alrededor de la imagen en un violeta medio */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra alrededor de la imagen */
+        }
+
+        /* Estilos para las cajas de sección (Email, Teléfono, Dirección) */
+        .section-box {
+            background-color: #F8F5FB; /* Violeta casi blanco, muy sutil */
+            padding: 1rem 1.5rem; /* Espaciado interno */
+            border-radius: 1rem; /* Bordes redondeados */
+            margin-bottom: 1rem; /* Margen inferior */
+            text-align: left; /* Alinea el texto a la izquierda */
+            display: flex; /* Habilita flexbox */
+            align-items: center; /* Alinea los elementos verticalmente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra suave */
+            width: 100%; /* Ocupa todo el ancho disponible */
+            max-width: 350px; /* Ancho máximo para la caja */
+        }
+
+        /* Estilos para los íconos dentro de las cajas de sección */
+        .section-box svg,
+        .section-box i {
+            margin-right: 1rem; /* Margen derecho */
+            color: #8f69c0; /* Violeta medio para los íconos */
+            font-size: 20px; /* Tamaño del ícono */
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Estilos para los párrafos dentro de las cajas de sección */
+        .section-box p {
+            color: #000000; /* Asegura que el texto sea gris oscuro */
+        }
+        .section-box p.text-xs {
+            color: #000000; /* Un gris un poco más claro para la descripción, pero legible */
+        }
+
+        /* Estilos para los campos de entrada de texto (input, textarea) */
+        .input-field {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            padding: 0.8rem 1rem; /* Espaciado interno */
+            margin-bottom: 1rem; /* Margen inferior */
+            border-radius: 0.75rem; /* Bordes redondeados */
+            border: 1px solid #D8C2EA; /* Borde violeta claro */
+            background-color: #F8F5FB; /* Fondo violeta muy sutil */
+            color: #000000; /* Color del texto (gris oscuro) */
+            outline: none; /* Elimina el contorno al enfocar */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04); /* Sombra interna sutil */
+        }
+
+        /* Estilos para los campos de entrada inválidos */
+        .input-field.invalid {
+            border-color: #EF4444; /* Rojo para el borde */
+        }
+
+        /* Estilos para el texto de marcador de posición (placeholder) */
+        .input-field::placeholder {
+            color: #777777; /* Placeholder gris medio */
+        }
+
+        /* Estilos para los botones principales - color sólido y elegante */
+        .button-primary {
+            display: flex; /* Habilita flexbox */
+            align-items: center; /* Alinea los elementos verticalmente */
+            justify-content: center; /* Centra el contenido horizontalmente */
+            background-color: #7b45c2; /* Un violeta oscuro y potente */
+            color: white; /* Color del texto (blanco) */
+            padding: 0.9rem 1.5rem; /* Espaciado interno */
+            border-radius: 2rem; /* Bordes muy redondeados (píldora) */
+            font-weight: 600; /* Negrita */
+            text-decoration: none; /* Sin subrayado */
+            transition: all 0.3s ease; /* Transición suave para efectos hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra */
+            margin-top: 1.5rem; /* Margen superior */
+            width: 100%; /* Ocupa todo el ancho */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cambia el cursor al pasar por encima */
+        }
+
+        /* Efecto al pasar el mouse por encima de los botones principales */
+        .button-primary:hover {
+            transform: translateY(-2px); /* Se eleva ligeramente */
+            background-color: #64299b; /* Un violeta un poco más vibrante al pasar el mouse */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35); /* Sombra más pronunciada */
+        }
+
+        /* Estilos para el contenedor de íconos de redes sociales */
+        .social-icons {
+            display: flex; /* Habilita flexbox */
+            justify-content: center; /* Centra los íconos horizontalmente */
+            gap: 5rem; /* Espacio entre los íconos */
+            margin-top: 1.5rem; /* Margen superior */
+            margin-bottom: 2rem; /* Margen inferior */
+        }
+
+        /* Estilos para los enlaces de redes sociales */
+        .social-icons a {
+            text-decoration: none; /* Sin subrayado */
+        }
+
+        /* Estilos para las cajas individuales de íconos de redes sociales */
+        .social-icon-box {
+            background-color: #5A328D; /* Un violeta similar al de los íconos de info */
+            border-radius: 50%; /* Hace la caja redonda */
+            padding: 0.8rem; /* Espaciado interno */
+            display: flex; /* Habilita flexbox */
+            align-items: center; /* Alinea los elementos verticalmente */
+            justify-content: center; /* Centra el ícono horizontalmente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra */
+            transition: all 0.3s ease; /* Transición suave para efectos hover */
+            cursor: pointer; /* Cambia el cursor al pasar por encima */
+        }
+
+        /* Efecto al pasar el mouse por encima de las cajas de íconos sociales */
+        .social-icon-box:hover {
+            background-color: #7D4F9F; /* Un violeta ligeramente más claro al pasar el mouse */
+            transform: translateY(-3px) scale(1.05); /* Se eleva y agranda un poco */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
+        }
+
+        /* Estilos para los íconos dentro de las cajas de redes sociales */
+        .social-icon-box i {
+            font-size: 1.5rem; /* Tamaño del ícono */
+            color: #E0E0E0; /* Color del ícono (grisáceo claro) */
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease; /* Transición suave para el color del ícono */
+        }
+
+        /* Efecto al pasar el mouse por encima: el color del ícono se mantiene blanco */
+        .social-icon-box:hover i {
+            color: #FFFFFF; /* Ícono se mantiene blanco */
+        }
+
+        .social-icon-with-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .icon-label {
+            font-size: 0.75rem;
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        /* Ajuste para el ícono de WhatsApp en el botón */
+        .button-primary svg,
+        .button-primary i {
+            width: 20px; /* Tamaño del ícono */
+            height: 20px; /* Tamaño del ícono */
+        }
+
+        /* Alineación de elementos del formulario a la izquierda dentro de right-section */
+        .form-section-content {
+            display: flex; /* Habilita flexbox */
+            flex-direction: column; /* Organiza los elementos en columna */
+            align-items: flex-start; /* Alinea los elementos hijos al inicio (izquierda) */
+            width: 100%; /* Ocupa todo el ancho */
+            max-width: 350px; /* Mismo ancho máximo que las section-box */
+        }
+        /* Alineación del título del formulario */
+        .form-section-content h3 {
+            text-align: left; /* Alinea el título a la izquierda */
+            width: 100%; /* Ocupa todo el ancho */
+            margin-top: 0; /* Sin margen superior extra */
+            margin-bottom: 1rem; /* Margen inferior */
+            color: #000000; /* Color de texto más oscuro */
+        }
+        /* Ajuste específico para el botón "Enviar" */
+        #enviarConsultaBtn {
+            width: auto; /* Anula el 100% de width de button-primary */
+            margin-top: 0; /* Sin margen superior extra */
+            margin-right: auto; /* Empuja el botón a la izquierda */
+            padding-left: 2rem; /* Más padding a la izquierda */
+            padding-right: 2rem; /* Más padding a la derecha para un tamaño más compacto */
+        }
+
+        /* Ajuste para la imagen en el botón "Guardar el contacto" */
+        #guardarContactoBtn img {
+            width: 20px; /* Tamaño más pequeño */
+            height: 20px; /* Tamaño más pequeño */
+        }
+
+        /* Estilos personalizados para ajustar el tamaño y la alineación */
+        .social-icon-with-label {
+            display: flex; /* Usa flexbox para alinear la imagen y el texto */
+            align-items: center; /* Alinea verticalmente al centro */
+            gap: 8px; /* Espacio entre los elementos principales */
+            margin-bottom: 10px; /* Espacio entre cada elemento de red social */
+        }
+        .social-icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .social-profile-image {
+            width: 24px; /* Ajusta el ancho de la imagen de perfil de Instagram */
+            height: 24px; /* Ajusta el alto de la imagen de perfil de Instagram */
+            border-radius: 50%; /* Hace la imagen circular */
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+        }
+        .place-logo-image {
+            width: 16px; /* Ajusta el ancho del logo del lugar (más pequeño) */
+            height: 16px; /* Ajusta el alto del logo del lugar (más pequeño) */
+            /* Puedes ajustar border-radius si no quieres que sea circular, por ejemplo: border-radius: 4px; */
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+            /* margin-left: 4px; No es necesario si el contenedor tiene gap */
+        }
+        .icon-label {
+            font-size: 1rem; /* Tamaño del texto del label */
+            color: #000000; /* Color del texto */
+            margin: 0; /* Elimina el margen por defecto del párrafo */
+        }
+
+        /* Media queries para adaptabilidad en pantallas pequeñas (móviles y tabletas) */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column; /* Apila las secciones verticalmente */
+            }
+            .left-section, .right-section {
+                width: 100%; /* Cada sección ocupa el ancho completo */
+                min-height: auto; /* La altura se ajusta al contenido */
+                padding: 1.5rem; /* Reduce el padding para pantallas pequeñas */
+                box-shadow: none; /* Elimina la sombra entre secciones apiladas */
+            }
+            .left-section {
+                border-bottom-left-radius: 0; /* Elimina radio de la parte inferior izquierda */
+                border-bottom-right-radius: 0; /* Elimina radio de la parte inferior derecha */
+            }
+            .right-section {
+                border-top-left-radius: 0; /* Elimina radio de la parte superior izquierda */
+                border-top-right-radius: 0; /* Elimina radio de la parte superior derecha */
+            }
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            .button-primary {
+                font-size: 0.9rem;
+                padding: 0.7rem 1rem;
+            }
+            .section-box {
+                padding: 0.8rem 1rem;
+                max-width: none; /* Permite que las cajas de sección se extiendan más */
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+            .form-section-content {
+                max-width: none; /* Permite que el formulario se extienda más */
+            }
+        }
+
+        /* Estilos para el mensaje de descarga */
+        .download-message-overlay {
+            position: fixed; /* Posición fija para cubrir toda la pantalla */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Fondo negro semitransparente */
+            display: flex; /* Flexbox para centrar el contenido */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Texto blanco */
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            opacity: 0; /* Inicialmente invisible */
+            visibility: hidden; /* Inicialmente oculto */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Transición suave */
+            padding: 1rem; /* Padding para evitar que el texto toque los bordes */
+            box-sizing: border-box; /* Incluye padding en el tamaño */
+        }
+
+        .download-message-overlay.show {
+            opacity: 1; /* Mostrar */
+            visibility: visible; /* Mostrar */
+        }
+
+        .download-message-overlay h2 {
+            font-size: 2.5rem; /* Letras grandes para el título */
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .download-message-overlay p {
+            font-size: 1rem; /* Letras pequeñas para la descripción */
+            text-align: center;
+            line-height: 1.5;
+            max-width: 80%; /* Limita el ancho del texto para mejor legibilidad */
+        }
+
+        /* Ajustes responsivos para el mensaje */
+        @media (max-width: 768px) {
+            .download-message-overlay h2 {
+                font-size: 1.8rem; /* Tamaño más pequeño en móviles */
+            }
+            .download-message-overlay p {
+                font-size: 0.9rem; /* Tamaño más pequeño en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección Izquierda (Violeta) -->
+    <div class="left-section">
+        <!-- Imagen de perfil principal -->
+        <img src="./IMAGENES/perfil.jpeg" alt="Foto de perfil de Jorgelina de Lordes Chiappero" class="profile-img">
+
+        <!-- Nombre del Abogado -->
+        <h1 class="text-3xl font-bold mb-2 text-white" style="color: #000000;"> Jorgelina de Lourdes</h1>
+        <h1 class="text-3xl font-bold mb-2 text-white" style="color: #000000; ">Chiappero</h1>
+
+
+        <!-- Descripción -->
+        <p class="text-base leading-relaxed mb-6 text-gray-300" style="color: #000000;">
+        Abogada
+        </p>
+        <p class="text-base leading-relaxed mb-6 text-gray-300" style="color: #000000;">
+        Martillera y Corredora Pública
+        </p>
+        <p class="text-base leading-relaxed mb-6 text-gray-300" style="color: #000000;">
+        Perito Tasadora
+        </p>
+
+
+        <!-- Botón de WhatsApp -->
+        <a href="https://wa.me/5493513901859" target="_blank" class="button-primary mb-4">
+            <i class="fa-brands fa-whatsapp mr-2" style="color: #ffffff; font-size: 1.2em;"></i>
+            WhatsApp
+        </a>        
+
+        <!-- Íconos de redes sociales -->
+        <div class="social-icons">
+
+                <div class="social-icon-with-label">
+                    <a href="https://www.instagram.com/chiappero.est.jur.inmob?igsh=aDZ3eHhwYzhlMWc5" target="_blank" class="social-icon-box">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <img src="./IMAGENES/CHIAPPERO.png" alt="Logo Instagram Estudio Jurídico" class="social-profile-image">
+                <p>Estudio Juridico</p>
+            </div>
+
+            <div class="social-icon-with-label">
+                <a href="https://www.instagram.com/puntogolondrina.ag/" target="_blank" class="social-icon-box">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <img src="./IMAGENES/punto golondrina.png" alt="Logo Instagram Estudio Jurídico" class="social-profile-image">
+                <p>Punto Golondrina</p>
+            </div>
+
+            <!--
+            <div class="social-icon-with-label">
+                    <a href="https://jchiappero.dynv6.net/" target="_blank" class="social-icon-box">
+                    <i class="fa-solid fa-globe" ></i>
+                </a>
+                <img src="./IMAGENES/CHIAPPERO.png" alt="Logo Instagram Estudio Jurídico" class="social-profile-image">
+                <p>Estudio Juridico</p>
+            </div>
+        -->
+        </div>
+        
+
+    </div>
+
+    <!-- Sección Derecha (Clara) -->
+    <div class="right-section">
+        <!-- Bloques de información de contacto -->
+         <!--
+        <div class="section-box">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+                <p class="font-semibold text-sm">Email</p>
+                <p class="text-xs text-gray-400">nuestroemail@gmail.com</p>
+            </div>
+        </div>
+        -->
+        <div class="section-box">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+                <p class="font-semibold text-sm">Teléfono</p>
+                <p class="text-xs text-gray-400">+54 9 351 3901859</p>
+            </div>
+        </div>
+        
+        <a href="https://www.google.com/maps/place/Punto+Golondrina+-+Departamentos+temporarios/@-31.6584174,-64.4313165,17z/data=!3m1!4b1!4m6!3m5!1s0x942d57cefeb45f31:0x445bc4efe98c95df!8m2!3d-31.6584174!4d-64.4313165!16s%2Fg%2F11y42c7vzx?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D"></a>
+        <div class="section-box">
+            <i class="fa-solid fa-route"></i>
+            <div>
+                <p class="font-semibold text-sm">Dirección</p>
+                <p class="text-xs text-gray-400">San Martin 29 PB- Alta Gracia</p>
+            </div>
+        </div>
+        
+        <!-- Formulario "Haz tu consulta" -->
+        <div class="form-section-content">
+            <h3 class="text-xl font-semibold mb-4 text-black mt-8">Haz tu consulta</h3>
+            <!-- Nuevo campo de Nombre Completo -->
+            <input type="text" id="nombreCompleto" placeholder="Nombre Completo" class="input-field">
+            <p id="nombreCompletoError" class="text-red-500 text-xs mt-1 text-left hidden">Falta el Nombre Completo</p>
+            
+            <input type="text" id="asunto" placeholder="Asunto" class="input-field">
+            <textarea id="consulta" placeholder="Consulta" class="input-field h-24 resize-none"></textarea>
+            <p id="consultaError" class="text-red-500 text-xs mt-1 text-left hidden">Falta la Consulta</p>
+            
+            <button id="enviarConsultaBtn" class="button-primary">Enviar</button>
+        </div>
+
+        <!-- Botón "Guardar el contacto" -->
+        <button id="guardarContactoBtn" class="button-primary mt-8">
+            <img src="./IMAGENES/perfil.jpeg" alt="Foto de contacto" class="mr-2 rounded-full object-cover">
+            Guardar el contacto
+        </button>
+    </div>
+
+    <!-- Mensaje de descarga (oculto por defecto) -->
+    <div id="downloadMessageOverlay" class="download-message-overlay">
+        <h2>¡SE DESCAGÓ EL CONTACTO!</h2>
+        <p>REVISE SUS DESCARGAS PARA AGENDAR EL NÚMERO</p>
+    </div>
+
+    <script>
+        // Función para guardar el contacto automáticamente
+        document.getElementById('guardarContactoBtn').addEventListener('click', function() {
+            const phoneNumber = '+5493513901859'; // Número de teléfono del abogado
+            const contactName = 'Dra. Chiappero'; // Nombre del contacto
+
+            // Crear contenido VCF
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:${contactName}
+TEL;TYPE=CELL:${phoneNumber}
+ADR;TYPE=HOME:;;San Martin 29 PB;Alta Gracia;Córdoba;Argentina
+URL:https://www.estudiochiappero.com.ar
+END:VCARD`;
+
+
+            // Crear un blob y un enlace para descargar el archivo VCF
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${contactName}.vcf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url); // Liberar el objeto URL
+
+            // Mostrar el mensaje de descarga
+            const downloadMessageOverlay = document.getElementById('downloadMessageOverlay');
+            downloadMessageOverlay.classList.add('show');
+
+            // Ocultar el mensaje después de 4 segundos
+            setTimeout(() => {
+                downloadMessageOverlay.classList.remove('show');
+            }, 4000); // 4 segundos
+
+            // Ocultar el mensaje si el usuario hace clic en él
+            downloadMessageOverlay.addEventListener('click', function() {
+                downloadMessageOverlay.classList.remove('show');
+            }, { once: true }); // El evento se ejecuta una sola vez
+        });
+
+        // Función para enviar la consulta por WhatsApp con validación
+        document.getElementById('enviarConsultaBtn').addEventListener('click', function () {
+            const nombreCompletoInput = document.getElementById('nombreCompleto');
+            const asuntoInput = document.getElementById('asunto');
+            const consultaInput = document.getElementById('consulta');
+        
+            const nombreCompletoError = document.getElementById('nombreCompletoError');
+            const consultaError = document.getElementById('consultaError');
+        
+            // Resetear errores
+            nombreCompletoInput.classList.remove('invalid');
+            nombreCompletoError.classList.add('hidden');
+            consultaInput.classList.remove('invalid');
+            consultaError.classList.add('hidden');
+        
+            let isValid = true;
+        
+            // Validaciones
+            if (nombreCompletoInput.value.trim() === '') {
+                nombreCompletoInput.classList.add('invalid');
+                nombreCompletoError.classList.remove('hidden');
+                isValid = false;
+            }
+        
+            if (consultaInput.value.trim() === '') {
+                consultaInput.classList.add('invalid');
+                consultaError.classList.remove('hidden');
+                isValid = false;
+            }
+        
+            if (!isValid) return;
+        
+            // Datos
+            const phoneNumber = '5493513901859';
+            const nombreCompleto = nombreCompletoInput.value.trim();
+            const asunto = asuntoInput.value.trim();
+            const consulta = consultaInput.value.trim();
+        
+            // Mensaje de WhatsApp
+            let message = `Hola Dra Chiappero:%0A` +
+                          `NOMBRE: ${encodeURIComponent(nombreCompleto)}%0A`;
+        
+            if (asunto === '') {
+                message += `ASUNTO: No hay asunto%0A`;
+            } else {
+                message += `ASUNTO: ${encodeURIComponent(asunto)}%0A`;
+            }
+        
+            message += `CONSULTA: ${encodeURIComponent(consulta)}`;
+        
+            // Abrir WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        });
+
+        // Eliminar errores al escribir en los campos
+        document.getElementById('nombreCompleto').addEventListener('input', function() {
+            this.classList.remove('invalid');
+            document.getElementById('nombreCompletoError').classList.add('hidden');
+        });
+
+        document.getElementById('consulta').addEventListener('input', function() {
+            this.classList.remove('invalid');
+            document.getElementById('consultaError').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
